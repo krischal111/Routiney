@@ -1,8 +1,36 @@
 {
-    "sunday":{
-      "10:15 - 11:05":"Control System [L]    SKR"
-    },
-    "Tue":{
-      "10:15 - 11:05":"Math III [L]            AKB"
-    }
-  }
+  1:[
+    ("Control System", 'L', {'SKR'}),  
+    ("Control System", 'T', {'SKR'}),
+    "Break",
+    ("Instrumentation", 'L', {'AKS'}),
+    "Same",
+    ("Electronic Devices and Circuits", 'P', {'JKM', 'ALR', 'SJ'}),
+    "Same",
+    "Same"
+  ],
+
+  
+  6:[
+    ("Electronic Devices and Circuits", 'L', {'JKM'}),
+    "Same",
+    ("Math III", 'L', {'GBJ'}),
+    "Break",
+    ("Math III", 'L', {'SG'}),
+    ("Electromagnetics", 'L', {'Dr. Volatile SPP'}),
+    "Same",
+    ""
+  ],
+
+  'Times':[
+    '10:15',
+    '11:05',
+    '11:55',
+    '12:45',
+    '1:35',
+    '2:25',
+    '3:15',
+    '4:05',
+    '4:55'
+  ]
+}
