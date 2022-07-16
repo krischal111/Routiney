@@ -11,13 +11,49 @@
       "Same"
     ],
 
-    [],
+    [
+      ["Instrumentation", "L", ["AKS"]],
+      "Same",
+      "Break",
+      ["Electromagnetics", "T", ["SPP"]],
+      ["Electromagnetics", "L", ["SPP"]],
+      ["Instrumentation for group B", "P",["AKS","SKC","KN"]],
+      "Same",
+      "Same"
+    ],
 
-    [],
+    [
+      ["Math III", "L", ["AKB"]],
+      ["Electronic Devices and Circuits", "L", ["JKM"]],
+      ["Electronic Devices and Circuits", "T", ["JKM"]],
+      "Break",
+      ["Probability & Statistics", "L", ["SS"]],
+      ["Probability & Statistics", "T", ["SS"]],
+      "",
+      "Same"
+    ],
 
-    [],
+    [
+      ["Control System", "L", ["SKR"]],  
+      "Same",
+      ["Math III", "L", ["AKB"]],
+      "Break",
+      ["Instrumentation", "T", ["AKS"]],
+      ["Instrumentation for group A", "P",["AKS","SKC","KN"]],
+      "Same",
+      "Same"
+    ],
 
-    [],
+    [
+      ["Probability & Statistics", "T", ["NBA"]],
+      "Same",
+      "",
+      "Break",
+      ["Math III", "L", ["VP"]],
+      ["Electromagnetics or Control system", "P",["AKS","SKC","KN"]],
+      "Same",
+      "Same"
+    ],
 
     [
       ["Electronic Devices and Circuits", "L", ["JKM"]],
@@ -29,12 +65,10 @@
       "Same",
       ""
     ],
-    [
-      "Holiday"
-    ]
+    "Holiday"
   ],
 
-  "Times":[
+  "times":[
     "10:15",
     "11:05",
     "11:55",
@@ -44,5 +78,15 @@
     "3:15",
     "4:05",
     "4:55"
+  ],
+
+  "days":[
+    "sun",
+    "mon",
+    "tue",
+    "wed",
+    "thu",
+    "fri",
+    "sat"
   ]
 }
