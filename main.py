@@ -133,7 +133,8 @@ async def on_message(message):
       await message.channel.send(bot_reply)
 
 # print(routine_print(''))
-client.run(os.getenv('routiney_token'))
+# client.run(os.getenv('routiney_token'))
+client.run('OTg2MjgzODY5NzM1MTE2OTAy.GEhZrK.uaXNlvh2cO--I50ntaTFCUey10QnPsD6-pV4Co')
 
 
 
