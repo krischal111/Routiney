@@ -112,8 +112,8 @@ def routine_print(day_word) -> str:
       word_for_day = 'Today'
 
     # print("day number = ", day_number, " word for day = ", word_for_day)
-    retstr  = f"```The routine for {word_for_day} is```"
-    retstr += f"```{routine_format(today_routine, times, word_for_day)}```"
+    retstr  = f"```The routine for {word_for_day} is:\n"
+    retstr += f"{routine_format(today_routine, times, word_for_day)}```"
     # retstr += f"```The routine for the specific day can change. Consult CR for that```"
     return retstr
 
