@@ -2,6 +2,7 @@ source env/bin/activate
 while true
 do
     git pull
+    git checkout main
     sleep .5
     echo 
     echo "Running new instance of routiney:"
