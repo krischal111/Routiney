@@ -90,18 +90,39 @@
     ["sat","saturday"]
   ],
 
-  "relative_day":{
+  "formal_days":[
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday"
+  ],
+
+  "relative_days":{
     "today":0,
     "td":0,
+    " ":0,
     "tomorrow":1,
     "morrow":1,
+    "tom":1,
     "tm":1,
     "overmorrow:":2,
     "ovm":2,
     "om":2,
     "yesterday":-1,
     "yst":-1,
-    "ereyesterday":-2
+    "ereyesterday":-2,
+    "eys":-2
+  },
+
+  "formal_relative_days":{
+    "-2":"Ereyesterday",
+    "-1":"Yesterday",
+    "0" :"Today",
+    "1" :"Tomorrow",
+    "2" :"Overmorrow"
   },
 
   "help":[

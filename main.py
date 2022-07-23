@@ -24,10 +24,10 @@ def routine_format(day_routine, times, word_for_day = '') -> str:
   if (day_routine == Holiday) :
     return str(
     f'''
-    *************************
-    {word_for_day+' is the holiday'}
+    ***************{'*' * len(word_for_day)}
+    {word_for_day} is the holiday
          Enjoy your day!!
-    ************************
+    ***************{'*' * len(word_for_day)}
     '''
     )
 
@@ -50,12 +50,12 @@ def routine_format(day_routine, times, word_for_day = '') -> str:
         if period in ["Break", ""]:
           routine_str += time_str + period + '\n'
         else:
-          subject, type, teachers = period
-          if type == 'L':
+          subject, period_type, teachers = period
+          if period_type == 'L':
             period_str += "Lec  of"
-          elif type == 'P':
+          elif period_type == 'P':
             period_str += "Prac of"
-          elif type == 'T':
+          elif period_type == 'T':
             period_str += "Tut  of"
           
           period_str += f" {subject:17} by {str(teachers)}\n"
@@ -73,25 +73,49 @@ def routine_print(day_word) -> str:
     routine = routine_json['routine']
     times    = routine_json['times']
     days = routine_json["days"]
-    relative_days = routine_json["relative_day"]
+    relative_days = routine_json["relative_days"]
     day_number = (datetime.now().weekday()+1)%7
+
+    formal_days = routine_json["formal_days"]
+    formal_relative_days = routine_json["formal_relative_days"]
     
+    word_for_day = ''
+    def convert_daystring_to_daynumber(daystring) -> int:
+      split_day = daystring.split(' ',1)
+      day_word = split_day[0]
+      nonlocal day_number
+      nonlocal word_for_day
+      if day_word in [day for listofdays in days for day in listofdays]:
+        for i in range(7):
+          if day_word in days[i]:
+            nonlocal day_number
+            nonlocal word_for_day
+            day_number = i
+            word_for_day = formal_days[i]
+            # print("i = ", i, "word_for_day = ", word_for_day)
+            break;
 
-    def convert_daystring_to_daynumber(daystring):
-      return (datetime.now().weekday()+1)%7
-
-    if day_word in [day for listofdays in days for day in listofdays]:
-      for i in range(7):
-        if day_word in days[i]:
-          day_number = i
-          break;
-
-    if day_word in relative_days:
-      day_number += relative_days[day_word]
-
+      if day_word in relative_days:
+        add_days = relative_days[day_word]
+        day_number += add_days
+        word_for_day = f"{formal_relative_days[str(add_days)]} of {word_for_day}"
+        # print(f"day number = '{day_number}' and word_for_day = {word_for_day}")
+      
+      if len(split_day) == 2:
+        return convert_daystring_to_daynumber(split_day[1])
+      else:
+        return day_number
+    
+    convert_daystring_to_daynumber(day_word)
     today_routine = routine[day_number%7]
-    # print(routine_format(today_routine,times))
-    return routine_format(today_routine, times)
+    if word_for_day == '':
+      word_for_day = 'Today'
+
+    # print("day number = ", day_number, " word for day = ", word_for_day)
+    retstr  = f"```The routine for {word_for_day} is```"
+    retstr += f"```{routine_format(today_routine, times, word_for_day)}```"
+    # retstr += f"```The routine for the specific day can change. Consult CR for that```"
+    return retstr
 
 
 @client.event
@@ -138,8 +162,9 @@ async def on_message(message):
       # routine_print()
       arg = ''
       if len(words) > 1:
-        arg = words[1]
-      bot_reply = f"```\n{routine_print(arg)}\n```"
+        arg = message.content[len(words[0]):]
+      
+      bot_reply += f"\n{routine_print(arg)}\n"
 
     # !update command
     elif words[0] == "!update":
@@ -166,16 +191,19 @@ async def on_message(message):
 # print(routine_print(''))
 client.run(os.getenv('routiney_token'))
 
+# cli for !sch command only
 def routiney_cli():
   while True:
     print('routiney-cli > ',end='')
 
-    async def process_message(message):
-      await on_message()
-    message = input()
-    task = process_message(message=message)
+    message = input().split(' ',1)
+    if(len(message) == 2):
+      message = message[1]
+    else:
+      message = ''
+    print(routine_print(message))
 
-
+routiney_cli()
 
 # import os
 # print(os.environ['routiney_token'])
