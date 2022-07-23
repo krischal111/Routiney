@@ -74,6 +74,7 @@ def routine_print(day_word) -> str:
     times    = routine_json['times']
     days = routine_json["days"]
     relative_days = routine_json["relative_day"]
+    day_number = (datetime.now().weekday()+1)%7
     
 
     def convert_daystring_to_daynumber(daystring):
@@ -88,10 +89,7 @@ def routine_print(day_word) -> str:
     if day_word in relative_days:
       day_number += relative_days[day_word]
 
-
-    day_number = (datetime.now().weekday()+1)%7
-    
-    today_routine = routine[day_number]
+    today_routine = routine[day_number%7]
     # print(routine_format(today_routine,times))
     return routine_format(today_routine, times)
 
