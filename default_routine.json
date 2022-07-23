@@ -81,12 +81,39 @@
   ],
 
   "days":[
-    "sun",
-    "mon",
-    "tue",
-    "wed",
-    "thu",
-    "fri",
-    "sat"
+    ["sun","sunday"],
+    ["mon","monday"],
+    ["tue","tuesday"],
+    ["wed","wednesday"],
+    ["thu","thursday"],
+    ["fri","friday"],
+    ["sat","saturday"]
+  ],
+
+  "relative_day":{
+    "today":0,
+    "td":0,
+    "tomorrow":1,
+    "morrow":1,
+    "tm":1,
+    "overmorrow:":2,
+    "ovm":2,
+    "om":2,
+    "yesterday":-1,
+    "yst":-1,
+    "ereyesterday":-2
+  },
+
+  "help":[
+    "Enter !help for this help.",
+    "[]: Optional commands      <>: Compulsory commands",
+    "",
+    "Following commands are supported:",
+    "1. !sch [day]: shows the routine",
+    "         day : today, tomorrow, yesterday, sun, mon, tue, .. sat.",
+    "",
+    "2. !ban <word>: bans a word for a day.",
+    "",
+    "3. !unban <word>: unbans the word if banned."
   ]
 }
